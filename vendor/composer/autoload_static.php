@@ -11,9 +11,9 @@ class ComposerStaticInit59d2481875b03c5e20771d56c9459556
     );
 
     public static $prefixLengthsPsr4 = array (
-        'R' => 
+        'B' => 
         array (
-            'BookstoreOrganizer\\' => 7,
+            'BookstoreOrganizer\\' => 19,
         ),
     );
 
