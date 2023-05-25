@@ -176,6 +176,16 @@ class Bookstore_Organizer {
 		// Action for register Book post type
 		$this->loader->add_action('init', \BookstoreOrganizer\PostTypes\PostTypes::class, 'register_all_post_types');
 
+		// Put any Book Taxonomy if you want
+		$book_taxonomies = [
+			'genre' => 'Genre',
+			'author' => 'Author'
+		];
+
+		// Action for register custom taxonomies
+		$taxonomies = new \BookstoreOrganizer\Taxonomies\Taxonomies($book_taxonomies);
+		$this->loader->add_action('init', $taxonomies, 'register_all_taxonomies');
+
 	}
 
 	/**
