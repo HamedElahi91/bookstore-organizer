@@ -155,7 +155,7 @@ class Bookstore_Organizer {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-        $this->loader->add_filter('acf/settings/load_json', $plugin_admin, 'acf_json_load_point');
+        	$this->loader->add_filter('acf/settings/load_json', $plugin_admin, 'acf_json_load_point');
 
 	}
 
@@ -172,6 +172,10 @@ class Bookstore_Organizer {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+
+		// Action for register Book post type
+		$this->loader->add_action('init', \BookstoreOrganizer\PostTypes\PostTypes::class, 'register_all_post_types');
+
 	}
 
 	/**
