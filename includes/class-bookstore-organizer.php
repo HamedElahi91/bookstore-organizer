@@ -186,6 +186,24 @@ class Bookstore_Organizer {
 		$taxonomies = new \BookstoreOrganizer\Taxonomies\Taxonomies($book_taxonomies);
 		$this->loader->add_action('init', $taxonomies, 'register_all_taxonomies');
 
+		// Add your metaboxes to create
+		// [TODO]: the metaboxs array will be loaded from plugin option page in upcomming version
+		$book_metaboxes = [
+			'author' => 'Author',
+			'isbn' => 'ISBN',
+			'price' => 'Price'
+		];
+		
+		
+		// Add metaboxes action
+		$metaboxes = new \BookstoreOrganizer\MetaBoxes\MetaBoxes($book_metaboxes) ;
+		$this->loader->add_action('add_meta_boxes', $metaboxes, 'add_all_metaboxes');
+
+		//Save metaboxes action
+		$this->loader->add_action('save_post_hm_book', $metaboxes, 'bookstore_organizer_save_metaboxes');
+		$this->loader->add_action('admin_notices', $metaboxes, 'book_metabox_validation_notice');
+
+
 	}
 
 	/**
